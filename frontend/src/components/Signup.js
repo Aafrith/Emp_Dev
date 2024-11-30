@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -12,6 +14,7 @@ function Signup() {
         password,
       });
       alert(response.data.message); // User registered successfully
+      navigate("/"); // Redirect to login
     } catch (error) {
       alert(error.response?.data?.error || "Signup failed");
     }
@@ -33,6 +36,9 @@ function Signup() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleSignup}>Signup</button>
+      <p>
+        Already have an account? <a href="/">Login</a>
+      </p>
     </div>
   );
 }

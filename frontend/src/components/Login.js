@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -14,6 +16,7 @@ function Login() {
       const { token } = response.data;
       localStorage.setItem("token", token); // Save JWT token in localStorage
       alert("Login successful!");
+      navigate("/dashboard"); // Redirect to the dashboard
     } catch (error) {
       alert(error.response?.data?.error || "Login failed");
     }
@@ -35,6 +38,9 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
+      <p>
+        Don't have an account? <a href="/signup">Sign up</a>
+      </p>
     </div>
   );
 }
