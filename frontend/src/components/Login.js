@@ -14,9 +14,9 @@ function Login() {
         password,
       });
       const { token } = response.data;
-      localStorage.setItem("token", token); // Save JWT token in localStorage
+      localStorage.setItem("token", token);
       alert("Login successful!");
-      navigate("/dashboard"); // Redirect to the dashboard
+      navigate("/dashboard"); // Redirect to dashboard
     } catch (error) {
       alert(error.response?.data?.error || "Login failed");
     }

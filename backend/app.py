@@ -54,66 +54,67 @@ def login():
 
     return jsonify({"error": "Invalid email or password"}), 401
 
-# Health Check for Backend
-@app.route("/", methods=["GET"])
-def home():
-    return jsonify({"message": "Backend is running"}), 200
-
-# Fetch all todos for the current user
-@app.route("/todos", methods=["GET"])
-@jwt_required()
-def get_todos():
-    user_id = get_jwt_identity()["id"]  # Get current user's ID from JWT
-    todos = list(db.todos.find({"user_id": user_id}))  # Find todos by user ID
-    for todo in todos:
-        todo["_id"] = str(todo["_id"])  # Convert ObjectId to string for JSON serialization
-    return jsonify(todos), 200
-
-# Add a new todo
+# Add a to-do item
 @app.route("/todos", methods=["POST"])
 @jwt_required()
 def add_todo():
-    user_id = get_jwt_identity()["id"]
+    current_user = get_jwt_identity()
     data = request.get_json()
     task = data.get("task")
+
     if not task:
         return jsonify({"error": "Task is required"}), 400
 
-    todo = {
-        "user_id": user_id,
-        "task": task,
-        "date": data.get("date", ""),  # Optional date field
-    }
+    todo = {"task": task, "user_id": current_user["id"]}
     db.todos.insert_one(todo)
     return jsonify({"message": "Task added successfully"}), 201
 
-# Update a todo
+# Get all to-dos for the logged-in user
+@app.route("/todos", methods=["GET"])
+@jwt_required()
+def get_todos():
+    current_user = get_jwt_identity()
+    todos = db.todos.find({"user_id": current_user["id"]})
+    todos_list = [{"_id": str(todo["_id"]), "task": todo["task"]} for todo in todos]
+    return jsonify(todos_list), 200
+
+# Update a to-do item
 @app.route("/todos/<todo_id>", methods=["PUT"])
 @jwt_required()
 def update_todo(todo_id):
-    user_id = get_jwt_identity()["id"]
+    current_user = get_jwt_identity()
     data = request.get_json()
     task = data.get("task")
+
     if not task:
         return jsonify({"error": "Task is required"}), 400
 
     result = db.todos.update_one(
-        {"_id": ObjectId(todo_id), "user_id": user_id},
-        {"$set": {"task": task, "date": data.get("date", "")}}
+        {"_id": ObjectId(todo_id), "user_id": current_user["id"]},
+        {"$set": {"task": task}}
     )
-    if result.matched_count == 0:
-        return jsonify({"error": "Task not found"}), 404
+
+    if result.modified_count == 0:
+        return jsonify({"error": "Task not found or not updated"}), 404
+
     return jsonify({"message": "Task updated successfully"}), 200
 
-# Delete a todo
+# Delete a to-do item
 @app.route("/todos/<todo_id>", methods=["DELETE"])
 @jwt_required()
 def delete_todo(todo_id):
-    user_id = get_jwt_identity()["id"]
-    result = db.todos.delete_one({"_id": ObjectId(todo_id), "user_id": user_id})
+    current_user = get_jwt_identity()
+    result = db.todos.delete_one({"_id": ObjectId(todo_id), "user_id": current_user["id"]})
+
     if result.deleted_count == 0:
         return jsonify({"error": "Task not found"}), 404
+
     return jsonify({"message": "Task deleted successfully"}), 200
+
+# Health Check for Backend
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Backend is running"}), 200
 
 
 if __name__ == "__main__":

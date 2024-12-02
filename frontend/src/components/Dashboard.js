@@ -4,11 +4,11 @@ import axios from "axios";
 function Dashboard() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
-  const [editTodo, setEditTodo] = useState(null);
+  const [editTodo, setEditTodo] = useState("");
 
   const fetchTodos = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:5000/todos", {
+    const res = await axios.get("http://127.0.0.1:5000/todos", {
       headers: { Authorization: `Bearer ${token}` },
     });
     setTodos(res.data);
@@ -17,7 +17,7 @@ function Dashboard() {
   const addTodo = async () => {
     const token = localStorage.getItem("token");
     await axios.post(
-      "http://localhost:5000/todos",
+      "http://127.0.0.1:5000/todos",
       { task: newTodo },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -25,20 +25,20 @@ function Dashboard() {
     fetchTodos();
   };
 
-  const updateTodo = async (todoId) => {
+  const updateTodo = async (id) => {
     const token = localStorage.getItem("token");
     await axios.put(
-      `http://localhost:5000/todos/${todoId}`,
+      `http://127.0.0.1:5000/todos/${id}`,
       { task: editTodo },
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    setEditTodo(null);
+    setEditTodo("");
     fetchTodos();
   };
 
-  const deleteTodo = async (todoId) => {
+  const deleteTodo = async (id) => {
     const token = localStorage.getItem("token");
-    await axios.delete(`http://localhost:5000/todos/${todoId}`, {
+    await axios.delete(`http://127.0.0.1:5000/todos/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     fetchTodos();
@@ -61,18 +61,13 @@ function Dashboard() {
       <ul>
         {todos.map((todo) => (
           <li key={todo._id}>
-            {editTodo === todo._id ? (
-              <input
-                type="text"
-                defaultValue={todo.task}
-                onChange={(e) => setEditTodo(e.target.value)}
-              />
-            ) : (
-              todo.task
-            )}
-            <button onClick={() => (editTodo ? updateTodo(todo._id) : setEditTodo(todo._id))}>
-              {editTodo === todo._id ? "Save" : "Edit"}
-            </button>
+            {todo.task}
+            <input
+              type="text"
+              placeholder="Edit task"
+              onChange={(e) => setEditTodo(e.target.value)}
+            />
+            <button onClick={() => updateTodo(todo._id)}>Update</button>
             <button onClick={() => deleteTodo(todo._id)}>Delete</button>
           </li>
         ))}
