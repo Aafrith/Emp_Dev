@@ -15,12 +15,15 @@ function Login() {
       });
       const { token } = response.data;
       localStorage.setItem("token", token);
+  
       alert("Login successful!");
-      navigate("/dashboard"); // Redirect to dashboard
+      navigate("/dashboard"); // Redirect after token is stored
     } catch (error) {
+      console.error(error.response?.data || error.message);
       alert(error.response?.data?.error || "Login failed");
     }
   };
+  
 
   return (
     <div>

@@ -74,9 +74,17 @@ def add_todo():
 @jwt_required()
 def get_todos():
     current_user = get_jwt_identity()
+    print("Current User:", current_user)  # Debugging log
+
+    if not current_user:
+        return jsonify({"error": "Invalid token"}), 401
+
     todos = db.todos.find({"user_id": current_user["id"]})
     todos_list = [{"_id": str(todo["_id"]), "task": todo["task"]} for todo in todos]
+    print("Fetched Todos:", todos_list)  # Debugging log
+
     return jsonify(todos_list), 200
+
 
 # Update a to-do item
 @app.route("/todos/<todo_id>", methods=["PUT"])
