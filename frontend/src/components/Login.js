@@ -14,15 +14,20 @@ function Login() {
         password,
       });
       const { token } = response.data;
+  
+      // Save token and user details to localStorage
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify({ email }));
+  
+      
+      navigate("/dashboard"); // Redirect to dashboard
 
-      alert("Login successful!");
-      navigate("/dashboard"); // Redirect after token is stored
     } catch (error) {
       console.error(error.response?.data || error.message);
       alert(error.response?.data?.error || "Login failed");
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
