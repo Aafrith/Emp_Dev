@@ -15,7 +15,7 @@ function Login() {
       });
       const { token } = response.data;
       localStorage.setItem("token", token);
-  
+
       alert("Login successful!");
       navigate("/dashboard"); // Redirect after token is stored
     } catch (error) {
@@ -23,27 +23,38 @@ function Login() {
       alert(error.response?.data?.error || "Login failed");
     }
   };
-  
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      <p>
-        Don't have an account? <a href="/signup">Sign up</a>
-      </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+        <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full p-3 border border-gray-300 rounded mb-4"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full p-3 border border-gray-300 rounded mb-4"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+        <p className="mt-4 text-center text-gray-600">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-500">
+            Sign up
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
