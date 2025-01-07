@@ -75,7 +75,7 @@ function Navbar() {
             </Link>
             <Link
               to="/signup"
-              className="py-2 px-6 bg-gray-500 text-white font-semibold rounded-full hover:bg-orange-600 transition duration-200"
+              className="py-2 px-6 bg-orange-600 text-white font-semibold rounded-full hover:bg-gray-500 transition duration-200"
             >
               Sign Up
             </Link>
