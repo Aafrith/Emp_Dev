@@ -48,7 +48,7 @@ function Signup() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="w-full py-3 rounded bg-gray-900 text-white font-bold hover:bg-gray-700  transition"
+          className="w-full py-3 rounded bg-gray-900 text-white font-bold hover:bg-orange-600  transition"
           onClick={handleSignup}
         >
           Sign Up

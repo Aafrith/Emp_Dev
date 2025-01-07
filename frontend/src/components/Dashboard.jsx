@@ -1,21 +1,30 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
-  const navigate = useNavigate();
   const username = localStorage.getItem("username");
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/");
-  };
-
   return (
-    <div className="min-h-screen bg-white text-black">     
-      <div className="p-6">
-        <h2 className="text-2xl font-bold mb-4">Hello, {username}!</h2>
-        <p>This is your secure dashboard.</p>
-      </div>
+    <div className="min-h-screen bg-white text-black p-6">
+      <h1 className="text-3xl font-bold mb-4">Welcome, {username}!</h1>
+      <p className="text-lg mb-4">Access your personalized resources below:</p>
+      <ul className="list-disc pl-6">
+        <li>
+          <Link to="/tutorials" className="text-blue-600 hover:underline">
+            Role-Based Tutorials
+          </Link>
+        </li>
+        <li>
+          <Link to="/interview-prep" className="text-blue-600 hover:underline">
+            Interview Preparation
+          </Link>
+        </li>
+        <li>
+          <Link to="/chatbot" className="text-blue-600 hover:underline">
+            Chatbot Assistance
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 }

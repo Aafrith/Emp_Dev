@@ -1,10 +1,14 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
+import Tutorials from "./components/Tutorials";
+import InterviewPrep from "./components/InterviewPrep";
+import Chatbot from "./components/Chatbot";
+import PricingPage from "./components/PricingPage"; // Import Pricing Page
+import PaymentGateway from "./components/PaymentGateway"; // Import Payment Gateway page
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -27,6 +31,32 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/tutorials"
+          element={
+            <ProtectedRoute>
+              <Tutorials />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/interview-prep"
+          element={
+            <ProtectedRoute>
+              <InterviewPrep />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <Chatbot />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
+        <Route path="/payment" element={<PaymentGateway />} /> {/* Payment Gateway Page */}
       </Routes>
     </Router>
   );
