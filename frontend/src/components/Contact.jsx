@@ -49,7 +49,7 @@ function Contact() {
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-16">
       {/* Page Header */}
       <div className="container mx-auto text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
+        <h1 className="text-5xl font-extrabold text-gray-800 mb-4 mt-16">
           Get In Touch
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">

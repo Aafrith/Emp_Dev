@@ -12,7 +12,9 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-900 text-white p-4 flex justify-between items-center shadow-md">
+    <nav
+      className="fixed top-4 left-4 right-4 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md text-white p-4 flex justify-between items-center shadow-md rounded-xl"
+    >
       {/* Left - Logo */}
       <h1 className="text-xl font-extrabold">
         <Link to="/" className="hover:text-gray-300 transition duration-200">

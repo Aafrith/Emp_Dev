@@ -49,7 +49,7 @@ function PricingPage() {
       {/* Header */}
       <header className="bg-gradient-to-r from-gray-700 to-orange-700 text-white py-16 shadow-lg">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-extrabold">Pricing Plans</h1>
+          <h1 className="text-5xl font-extrabold mt-16">Pricing Plans</h1>
           <p className="mt-4 text-xl font-light max-w-2xl mx-auto">
             Select a plan tailored to your goals and unlock your potential.
           </p>

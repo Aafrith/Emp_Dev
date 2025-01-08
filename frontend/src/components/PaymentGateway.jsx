@@ -3,7 +3,7 @@ import React from "react";
 function PaymentGateway() {
   return (
     <div className="text-center py-16">
-      <h2 className="text-4xl font-bold mb-6">Payment Gateway</h2>
+      <h2 className="text-4xl font-bold mb-6 mt-16">Payment Gateway</h2>
       <p className="text-lg mb-6">Please complete your payment to proceed with your selected plan.</p>
       {/* Mock Payment Form */}
       <form className="mx-auto max-w-lg">
