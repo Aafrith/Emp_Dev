@@ -36,6 +36,13 @@ function Navbar() {
           <span className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-in-out rounded-full"></span>
           <span className="relative z-10">Pricing</span>
         </Link>
+        <Link
+          to="/contact"
+          className="relative font-bold px-3 py-2 group transition duration-200"
+        >
+          <span className="absolute inset-0 bg-orange-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-in-out rounded-full"></span>
+          <span className="relative z-10">Contact</span>
+        </Link>
         {token && (
           <>
             <Link

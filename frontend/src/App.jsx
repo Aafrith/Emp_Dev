@@ -9,6 +9,7 @@ import InterviewPrep from "./components/InterviewPrep";
 import Chatbot from "./components/Chatbot";
 import PricingPage from "./components/PricingPage"; // Import Pricing Page
 import PaymentGateway from "./components/PaymentGateway"; // Import Payment Gateway page
+import Contact from "./components/Contact";
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -57,6 +58,7 @@ function App() {
         />
         <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
         <Route path="/payment" element={<PaymentGateway />} /> {/* Payment Gateway Page */}
+        <Route path="/contact" element={<Contact />} /> {/* Contact Page */}
       </Routes>
     </Router>
   );
