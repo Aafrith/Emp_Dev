@@ -46,7 +46,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-16 px-6">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-16">
       {/* Page Header */}
       <div className="container mx-auto text-center mb-12">
         <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
@@ -58,15 +58,15 @@ function Contact() {
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch rounded-xl overflow-hidden shadow-lg">
         {/* Contact Image */}
-        <div className="relative">
+        <div className="relative h-full">
           <img
             src={contact}
             alt="Contact Us"
-            className="w-full rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            className="w-full h-full object-cover transform hover:scale-105 transition duration-300"
           />
-          <div className="absolute top-4 left-4 text-white bg-orange-500 p-2 rounded-full">
+          <div className="absolute top-4 left-4 text-white bg-orange-500 p-2 rounded-full shadow-lg">
             <FaEnvelope size={24} />
           </div>
         </div>
@@ -74,7 +74,7 @@ function Contact() {
         {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-xl rounded-xl p-8 space-y-6"
+          className="bg-white p-8 space-y-6 flex flex-col justify-center"
         >
           {/* Success Notification */}
           {submitted && (
