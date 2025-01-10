@@ -1,0 +1,45 @@
+/* Chatbot.css */
+.chat-container {
+    position: relative;
+    animation: glowing-border 2s infinite;
+    padding: 8px; /* Adjust spacing to prevent animation overlap */
+  }
+  
+  .chat-container::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    z-index: -1;
+    border-radius: 16px; /* Matches the rounded-lg class */
+    background: linear-gradient(45deg, rgb(228, 149, 3), rgb(66, 66, 66), rgb(0, 0, 199));
+    background-size: 300% 300%;
+    animation: gradient-move 6s infinite;
+  }
+  
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes glowing-border {
+    0% {
+      box-shadow: 0 0 10px rgb(223, 147, 6);
+    }
+    50% {
+      box-shadow: 0 0 20px rgb(66, 66, 66);
+    }
+    100% {
+      box-shadow: 0 0 10px rgb(214, 142, 7);
+    }
+  }
+  
