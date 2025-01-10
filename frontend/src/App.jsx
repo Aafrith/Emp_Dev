@@ -1,20 +1,16 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Dashboard from "./components/Dashboard";
-import Tutorials from "./components/Tutorials";
-import InterviewPrep from "./components/InterviewPrep";
-import Chatbot from "./components/Chatbot";
-import PricingPage from "./components/PricingPage"; // Import Pricing Page
-import PaymentGateway from "./components/PaymentGateway"; // Import Payment Gateway page
-import Contact from "./components/Contact";
-
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/" />;
-};
+import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Tutorials from "./pages/Tutorials";
+import InterviewPrep from "./pages/InterviewPrep";
+import Chatbot from "./components/Chatbot"; // Still a standalone component
+import PricingPage from "./pages/PricingPage";
+import PaymentGateway from "./pages/PaymentGateway";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -56,9 +52,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/pricing" element={<PricingPage />} /> {/* Pricing Page */}
-        <Route path="/payment" element={<PaymentGateway />} /> {/* Payment Gateway Page */}
-        <Route path="/contact" element={<Contact />} /> {/* Contact Page */}
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/payment" element={<PaymentGateway />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

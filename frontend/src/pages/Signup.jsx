@@ -23,7 +23,7 @@ function Signup() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-900">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-900 mt-8">
       <div className="w-full max-w-md bg-gray-200 p-6 rounded shadow-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Sign Up</h1>
         <input
