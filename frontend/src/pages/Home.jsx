@@ -51,7 +51,7 @@ function Home() {
   return (
     <div className="bg-gradient-to-r from-gray-100 to-gray-50 text-gray-900 min-h-screen ">
       {/* Header Section */}
-      <header className="bg-gradient-to-r from-gray-800 to-orange-800 text-white py-16 shadow-lg ">
+      <header className="bg-gradient-to-r from-gray-800 via-orange-900 to-gray-800 text-white py-16 shadow-lg ">
         <div className="container mx-auto text-center">
           <h1 className="text-6xl font-extrabold tracking-wide transform transition duration-500 hover:scale-105 mt-16">
             Employee Development Platform

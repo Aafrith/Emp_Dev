@@ -47,7 +47,7 @@ function PricingPage() {
   return (
     <div className="bg-gradient-to-r from-gray-100 to-gray-50 text-gray-900 min-h-screen">
       {/* Header */}
-      <header className="bg-gradient-to-r from-gray-700 to-orange-700 text-white py-16 shadow-lg">
+      <header className="bg-gradient-to-r from-gray-800 via-orange-900 to-gray-800 text-white py-16 shadow-lg">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl font-extrabold mt-16">Pricing Plans</h1>
           <p className="mt-4 text-xl font-light max-w-2xl mx-auto">

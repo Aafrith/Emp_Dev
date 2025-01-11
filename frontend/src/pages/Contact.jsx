@@ -46,13 +46,13 @@ function Contact() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-16">
+    <div className="bg-gradient-to-r from-gray-800 via-orange-900 to-gray-800   min-h-screen py-16">
       {/* Page Header */}
       <div className="container mx-auto text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-gray-800 mb-4 mt-16">
+        <h1 className="text-5xl font-extrabold text-white mb-4 mt-16">
           Get In Touch
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg text-white max-w-3xl mx-auto">
           We'd love to hear from you! Feel free to reach out with any questions, feedback, or just to say hi.
         </p>
       </div>
@@ -165,19 +165,19 @@ function Contact() {
       {/* Contact Info */}
       <div className="container mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
         <div className="flex flex-col items-center space-y-3">
-          <FaMapMarkerAlt size={40} className="text-gray-800" />
-          <h4 className="text-xl font-bold text-orange-600">Our Location</h4>
-          <p className="text-gray-600">Sri Lanka</p>
+          <FaMapMarkerAlt size={40} className="text-orange-500 transform hover:scale-105 transition duration-300" />
+          <h4 className="text-xl font-bold text-gray-400">Our Location</h4>
+          <p className="text-white">Sri Lanka</p>
         </div>
         <div className="flex flex-col items-center space-y-3">
-          <FaPhone size={40} className="text-gray-800" />
-          <h4 className="text-xl font-bold text-orange-600">Call Us</h4>
-          <p className="text-gray-600">+94773054223</p>
+          <FaPhone size={40} className="text-orange-500 transform hover:scale-105 transition duration-300" />
+          <h4 className="text-xl font-bold text-gray-400">Call Us</h4>
+          <p className="text-white">+94773054223</p>
         </div>
         <div className="flex flex-col items-center space-y-3">
-          <FaEnvelope size={40} className="text-gray-800" />
-          <h4 className="text-xl font-bold text-orange-600">Email Us</h4>
-          <p className="text-gray-600">maafrith15919@gmail.com</p>
+          <FaEnvelope size={40} className="text-orange-500 transform hover:scale-105 transition duration-300" />
+          <h4 className="text-xl font-bold text-gray-400">Email Us</h4>
+          <p className="text-white">maafrith15919@gmail.com</p>
         </div>
       </div>
     </div>
